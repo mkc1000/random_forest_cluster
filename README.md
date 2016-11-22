@@ -9,7 +9,7 @@ Initialize data_transformed as empty array
 
 Repeat n_iter times:
 
->  Select n_feat features at random
+>  Select n_feat features at random from data
 	
 >  Train a decision tree regressor of depth max_depth
 	
