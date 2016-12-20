@@ -28,7 +28,7 @@ Intra-feature Random Forest Clustering (IRFC) is an algorithm wherein a forest o
     rfc = RFCluster(k=5)
     clusters = rfc.fit_predict(X)
 
-###Validating Clustering Algorithms--Example Usage: (See Yeung, 2001)
+###Validating Clustering Algorithms, Example Usage: (See Yeung, 2001)
 
     from sklearn.datasets import load_boston
     from rf_cluster import RFCluster
@@ -38,9 +38,11 @@ Intra-feature Random Forest Clustering (IRFC) is an algorithm wherein a forest o
     X = load_boston().data
     kmeans = KMeans(n_clusters=5)
     rfc = RFCluster(k=5)
-    wcv_kmeans = WCVScore(kmeans) # the model passed to WCVScore must have a fit_predict method
+    wcv_kmeans = WCVScore(kmeans)  # the model passed to WCVScore must have a fit_predict method
     wcv_rfc = WCVScore(rfc)
     kmeans_score, kmeans_nclusters = wcv_kmeans.score(X)
-    rfc_score, rfc_nclusters = wcv_rfc.score(X) # warning: this line takes a few minutes
+    rfc_score, rfc_nclusters = wcv_rfc.score(X)  # warning: this line takes a few minutes
 
 A lower score indicates a better algorithm. Two algorithms are only comparable per this metric when they output the same number of clusters, because when a clustering algorithm outputs a greater number of clusters, it is trivially easier to achieve a lower score.
+
+The following plot compares IRFC (using the default parameters) with k-means on the boston housing dataset. The output of the code above is plotted, as n_clusters is varied from 5 to other values.
