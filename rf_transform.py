@@ -34,7 +34,17 @@ def get_weight(rftransform, X, features_to_predict):
     return weight
 
 class RFTransform(object):
-    def __init__(self, n_forests, model_type='random_forest', n_trees=1, n_features_to_predict=0.5, max_depth=5, outputting_weights=True, using_pca=True, weight_extent=1, learning_rate=0.9, n_jobs=1):
+    def __init__(self,
+                 n_forests,
+                 model_type='random_forest',
+                 n_trees=1,
+                 n_features_to_predict=0.5,
+                 max_depth=5,
+                 outputting_weights=True,
+                 using_pca=True,
+                 weight_extent=1,
+                 learning_rate=0.9,
+                 n_jobs=1):
         self.n_forests = n_forests
         self.n_trees = n_trees
         self.n_features_to_predict = n_features_to_predict
@@ -58,7 +68,7 @@ class RFTransform(object):
         if outputting_weights:
             self.weights = []
 
-    def fit(self, X_init, _=None):
+    def fit(self, X_init, *args, **kwargs):
         self.features_indices = []
 
         X_ss = self.ss1.fit_transform(X_init)
@@ -96,7 +106,8 @@ class RFTransform(object):
         else:
             X = X_ss
 
-        decision_paths = Parallel(n_jobs=self.n_jobs)(delayed(get_predictions)(self,X,i,features_to_predict) for i, features_to_predict in enumerate(self.features_indices))
+        decision_paths = Parallel(n_jobs=self.n_jobs)(delayed(get_predictions)(self,X,i,features_to_predict)
+                                                      for i, features_to_predict in enumerate(self.features_indices))
         self.decision_paths = (np.array(decision_paths)).T
 
         if self.outputting_weights:
@@ -107,6 +118,6 @@ class RFTransform(object):
         else:
             return self.decision_paths
 
-    def fit_transform(self, X_init, _=None):
+    def fit_transform(self, X_init, *args, **kwargs):
         self.fit(X_init)
         return self.transform(X_init)
