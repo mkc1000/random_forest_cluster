@@ -43,6 +43,8 @@ Intra-feature Random Forest Clustering (IRFC) is an algorithm wherein a forest o
     kmeans_score, kmeans_nclusters = wcv_kmeans.score(X)
     rfc_score, rfc_nclusters = wcv_rfc.score(X)  # warning: this line takes a few minutes
 
-A lower score indicates a better algorithm. Two algorithms are only comparable per this metric when they output the same number of clusters, because when a clustering algorithm outputs a greater number of clusters, it is trivially easier to achieve a lower score.
+A lower score indicates a better algorithm. Two algorithms are only comparable per this metric when they output the same number of clusters, because when a clustering algorithm outputs a greater number of clusters, it is easier to achieve a lower score.
 
 The following plot compares IRFC (using the default parameters) with k-means on the boston housing dataset. The output of the code above is plotted, as n_clusters is varied from 5 to other values.
+
+![Comparison of k-means and IRFC on Boston Housing Data](https://raw.githubusercontent.com/mkc1000/random_forest_cluster/master/Boston%20Housing%20Comparison.png)
