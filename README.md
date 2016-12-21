@@ -1,4 +1,4 @@
-# random_forest_cluster
+# Intra-Feature Random Forest Clustering
 Intra-feature Random Forest Clustering (IRFC) is an algorithm wherein a forest of shallow trees is trained on random subsets of the features (each tree trained on a different random subset). Points are clustered together according to how often they end up on the same leaf. IRFC is preliminarily the best available clustering algorithm per Yeung's ([2001](http://bioinformatics.oxfordjournals.org/content/17/4/309.short)) FOM cluster validation metric. Further details provided in [the paper introducing the algorithm](https://github.com/mkc1000/random_forest_cluster/blob/master/Intra-Feature_Random_Forest_Clustering.pdf).
 
 ###Pseudocode:
