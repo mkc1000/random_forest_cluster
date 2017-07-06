@@ -1,7 +1,6 @@
 import numpy as np
 from joblib import Parallel, delayed
 import random
-from datetime import datetime
 
 def mean_cluster_variances(clusters, feature):
     """Inputs:
